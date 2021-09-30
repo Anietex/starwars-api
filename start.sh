@@ -4,11 +4,11 @@ then
   export $(cat .env | sed 's/#.*//g' | xargs)
 fi
 
-#npm run dev
-if [ $ENV = "production" ]; then
+
+if [ $NODE_ENV = "production" ]; then
     npm start
 fi
 
-if [ $ENV = "dev"  ] || [ $ENV = "dev" ] ; then
+if [ $NODE_ENV = "development"  ] || [ $NODE_ENV = "local" ] || [ $NODE_ENV = "staging" ] ; then
     npm run dev
 fi
