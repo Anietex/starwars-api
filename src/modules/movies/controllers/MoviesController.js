@@ -15,7 +15,7 @@ export default class MoviesController extends BaseController {
 
 
     getCharacters = async (req, res) => {
-        let characters = await this.repository.getCharacters()
+        let characters = await this.repository.getCharacters(req.query)
         res.json(this.success(characters))
     }
 }
