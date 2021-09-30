@@ -1,0 +1,45 @@
+{
+  "name": "meta-care",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all clean build serve",
+    "serve": "node ./build/bin/www.js",
+    "clean": "rimraf build",
+    "build": "babel ./src --out-dir ./build",
+    "dev": "babel-watch  src/bin/www.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/register": "^7.15.3",
+    "@babel/runtime": "^7.8.7",
+    "axios": "^0.19.2",
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.19.0",
+    "collect.js": "^4.20.3",
+    "cors": "^2.8.5",
+    "debug": "^4.3.2",
+    "dotenv": "^8.6.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^7.5.0",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "sequelize-cli": "^6.2.0"
+  }
+}
