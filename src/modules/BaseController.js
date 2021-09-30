@@ -1,3 +1,4 @@
+import Logger from "../utils/logger";
 export default class BaseController {
 
     success(data,message=null){
@@ -17,5 +18,9 @@ export default class BaseController {
             data: data,
 
         }
+    }
+
+    logError(e){
+        Logger.error(e)
     }
 }

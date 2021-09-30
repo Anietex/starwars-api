@@ -10,9 +10,10 @@ const moviesController = new MoviesController()
 const commentController = new CommentController()
 
 router.get('/movies', moviesController.getMovies)
-router.get('/characters',validateListCharacters, moviesController.getCharacters);
+router.get('/characters',validateListCharacters, moviesController.getCharacters)
 
-router.post('/comment', validateCreateComment, commentController.createComment);
+router.post('/comment', validateCreateComment, commentController.createComment)
+router.get('/comments/:id', commentController.getComments)
 
 
 export default router

@@ -1,5 +1,4 @@
 import {Comment } from '../../../models'
-import {Op, where} from 'sequelize'
 
 export default class CommentRepository {
 
@@ -8,12 +7,18 @@ export default class CommentRepository {
        return Comment.create(data)
     }
 
-    getMovieCommentCount(id){
+    getMovieCommentCount(episodeId){
         return Comment.count({
             where: {
-                episode_id: {
-                    [Op.eq]: id
-                }
+                episode_id: episodeId
+            }
+        })
+    }
+
+    getComments(episodeId){
+        return Comment.findAll({
+            where: {
+                episode_id: parseInt(episodeId)
             }
         })
     }

@@ -20,9 +20,18 @@ import CommentRepository from "../repositories/CommentRepository";
             res.json(this.success(comment, 'Comment added successfully'));
 
         }catch (e){
+            this.logError(e)
             res.status(500).json(this.error('Unable to create comment at the moment'))
         }
+    }
 
-
+    getComments =  async (req, res) => {
+        try{
+            const comments =  await this.repository.getComments(req.params.id);
+             res.json(this.success(comments))
+        }catch (e){
+            this.logError(e)
+            res.status(500).json(this.error('Unable to get comments at the moment'))
+        }
     }
 }

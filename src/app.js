@@ -12,8 +12,12 @@ app.use(cors());
 
 app.use('/', moviesRoutes)
 
-app.get('/', async (req, res) => {
-    res.send({ message: 'Welcome'} )
+
+app.all('*', async (req, res) => {
+    res.status(404).json({
+        status: "error",
+        message: "Invalid API URL"
+    })
 })
 
 export default app
