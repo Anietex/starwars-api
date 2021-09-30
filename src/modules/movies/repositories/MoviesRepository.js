@@ -1,25 +1,27 @@
 import StarWarAPI from "../../../app/services/StarWarAPI";
+import CommentRepository from "./CommentRepository";
 
 export  default class MoviesRepository {
 
     constructor() {
         this.starWarAPI = new StarWarAPI();
+        this.commentRepostory = new CommentRepository()
     }
     getMovies = async () => {
         let movies = await this.starWarAPI.getMovies();
         movies = movies.sort((a, b) => {
             return (new Date(a.release_date)) - (new Date(b.release_date))
-        }).map(({title, opening_crawl, release_date, episode_id}) => {
+        }).map( async ({title, opening_crawl, release_date, episode_id}) => {
                 return {
                     episode_id,
                     title,
                     opening_crawl,
                     release_date,
-                    comment_count: 0,
+                    comment_count: await this.commentRepostory.getMovieCommentCount(episode_id),
                 }
             }
         )
-        return movies
+        return Promise.all(movies)
     }
 
     getCharacters = async (query) => {
